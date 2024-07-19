@@ -1,0 +1,11 @@
+import re
+text = "The quick brown fox jumps over the lazy dog. 1234567890."
+pattern = r'\b\w+\b'
+matches = re.findall(pattern, text)
+print("All words in the text:", matches)
+pattern = r'\d+'
+matches = re.findall(pattern, text)
+print("Digits in the text:", matches)
+pattern = r'\bb\w+\b'
+matches = re.findall(pattern, text)
+print("Words starting with 'b':", matches)
