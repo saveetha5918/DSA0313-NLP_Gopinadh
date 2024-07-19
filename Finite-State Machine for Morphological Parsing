@@ -1,0 +1,21 @@
+class PluralFSA:
+    def __init__(self):
+        self.state = 'q0'
+
+    def transition(self, char):
+        if self.state == 'q0':
+            if char.isalpha():
+                self.state = 'q1'
+
+    def is_accepting(self):
+        return self.state == 'q1'
+
+    def pluralize(self, noun):
+        if noun.endswith('s'):
+            return noun + 'es'
+        else:
+            return noun + 's'
+fsa = PluralFSA()
+test_nouns = ["cat", "bus", "dog"]
+plurals = [fsa.pluralize(noun) for noun in test_nouns]
+print(f"Plural forms: {plurals}")
