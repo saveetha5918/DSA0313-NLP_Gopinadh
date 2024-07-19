@@ -1,0 +1,10 @@
+import nltk
+from nltk.tokenize import word_tokenize
+from nltk.corpus import wordnet
+nltk.download('punkt')
+nltk.download('wordnet')
+text = "Cats are playing in the garden"
+tokens = word_tokenize(text)
+for token in tokens:
+    lemma = nltk.WordNetLemmatizer().lemmatize(token)
+    print(f"Word: {token}, Lemma: {lemma}")
