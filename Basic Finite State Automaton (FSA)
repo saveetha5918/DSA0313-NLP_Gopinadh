@@ -1,7 +1,8 @@
 class SimpleFSA:
     def __init__(self):
-        self.state = 'q0'  
-   def transition(self, char):
+        self.state = 'q0'
+        
+    def transition(self, char):
         if self.state == 'q0':
             if char == 'a':
                 self.state = 'q1'
@@ -12,6 +13,8 @@ class SimpleFSA:
                 self.state = 'q2'
             else:
                 self.state = 'q0'
+        elif self.state == 'q2':
+            self.state = 'q0' 
 
     def is_accepting(self):
         return self.state == 'q2'
@@ -20,6 +23,7 @@ class SimpleFSA:
         for char in input_string:
             self.transition(char)
         return self.is_accepting()
+
 fsa = SimpleFSA()
 test_string = "xxab"
 print(f"The string '{test_string}' is recognized by the FSA: {fsa.recognize(test_string)}")
