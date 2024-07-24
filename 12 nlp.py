@@ -1,8 +1,8 @@
 class EarleyItem:
     def __init__(self, production, dot_position, start_column):
         self.production = production
-        self.dot_position = dot_position
-        self.start_column = start_column
+        self.dot_position = dot_position  
+        self.start_column = start_column  
 
     def __eq__(self, other):
         return (self.production == other.production and 
@@ -13,11 +13,11 @@ class EarleyItem:
         return hash((tuple(self.production), self.dot_position, self.start_column))
 
 def predict(grammar, column, item):
-    non_terminal = item.production[item.dot_position]
+    non_terminal = item.production[1][item.dot_position]
     for rule in grammar.get(non_terminal, []):
         new_item = EarleyItem((non_terminal, rule), 0, column)
-        if new_item not in column:
-            column.append(new_item)
+        if new_item not in chart[column]:
+            chart[column].append(new_item)
 
 def scan(tokens, column, item):
     if item.dot_position < len(item.production[1]) and \
